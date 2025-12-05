@@ -1,5 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/video-descrambler.svg)](https://badge.fury.io/py/video-descrambler)
-
+[![PyPI version](https://badge.fury.io/py/video-descrambler.svg)](https://badge.fury.io/py/video-descrambler) [![CI](https://github.com/thibthibaut/video-descrambler/actions/workflows/ci.yml/badge.svg)](https://github.com/thibthibaut/video-descrambler/actions/workflows/ci.yml)
 # Video Descrambler
 
 ## Demo
