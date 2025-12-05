@@ -17,11 +17,17 @@ Using [`uv`](https://docs.astral.sh/uv/) is recommended for environment and pack
 Create a virtual environment and activate it:
 
 ```bash
-uv venv
+uv venv -p 3.12
 source .venv/bin/activate
 ```
 
-Install the app:
+From Pypi repository:
+
+```bash
+uv pip install video-descrambler
+```
+
+From source, after cloning this repository:
 
 ```bash
 uv pip install .
