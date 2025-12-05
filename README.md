@@ -1,6 +1,12 @@
 # Video Descrambler
 
-This project provides a tool to reconstruct corrupted video files where the frames have been shuffled and extraneous "junk" frames have been introduced. It reorders the video frames into their correct sequence and removes the frames that are not part of the original video.
+## Demo
+
+https://github.com/user-attachments/assets/bba610e3-22fa-47ed-b2dd-fe70f50fa457
+
+## Introduction
+
+Originaly given as a fun exercise, this project provides a tool to reconstruct corrupted video files where the frames have been shuffled and extraneous "junk" frames have been introduced. It reorders the video frames into their correct sequence and removes the frames that are not part of the original video.
 
 ## Installation and Usage
 
