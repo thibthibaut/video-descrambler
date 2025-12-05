@@ -11,7 +11,7 @@ Using [`uv`](https://docs.astral.sh/uv/) is recommended for environment and pack
 Create a virtual environment and activate it:
 
 ```bash
-uv venv -p 3.12 # Create virtual with python 3.12
+uv venv
 source .venv/bin/activate
 ```
 
@@ -27,9 +27,7 @@ The project comes with a command-line interface for easy use.
 
 To descramble a video, call the `video-descrambler` tool:
 ```bash
-video-descrambler corrupted_video.mp4 fixed_video.mp4
-# Alternatively,
-# uv run video-descrambler corrupted_video.mp4 fixed_video.mp4
+video-descrambler corrupted_video.mp4 -o fixed_video.mp4
 ```
 
 ### Programmatic Usage
@@ -66,9 +64,20 @@ The pipeline consists of:
 
 2.  **Distance Calculation**: A pairwise distance matrix is computed between the feature vectors of all frames. This $N\times N$ matrix represents how different each frame is from every other frame. The default (`PixelDistanceCalculator`) uses the Euclidean distance. This is implemented via the `DistanceCalculator` abstract base class. Other distance metrics that could be used are Structural Similarity between frames (SSIM), Optical flow magnitude (Low magnitude means frames are closer), mean or median displacement using keypoints and descriptors etc...
 
+An example distance matrix can be seen here.
+
+![Distance matrix](.assets/distance_matrix.png)
+
 3.  **Outlier Filtering**: To remove junk frames that are not part of the original sequence an outlier detection step is performed. The current implementation uses an IQR (Interquartile Range) based method on the mean distances of each frame to all others. Frames that are too dissimilar from the rest are discarded. This approach may need to be refined. This step can be optional depending on the subsequent sequencer implementation.
+The following histogram showcase the IRQ filtering method :
+
+![IRQ filtering](.assets/filtering.png)
 
 4.  **Sequencing**: Once we have the distance matrix, the problem is to find the correct order of the remaining frames, we can see the distance matrix as a graph of interconnected frames where edge weights are distances. Finding the right sequence means finding the minumum cost hamiltonian path. This can also be modeled as a Traveling Salesman Problem (TSP) with the slight difference that a TSP solver will find a "tour" looping back to the first node. The `TSPSequencer` handles this by first solving the TSP to find the shortest tour, and then converting the circular tour into a linear path by finding the largest distance gap between consecutive frames in the tour and breaking the tour at that point. This is handled by the `Sequencer` abstract base class. The default implementation (`TSPSequencer`) uses the `fast-tsp` library to find a near-optimal solution very quickly.
+
+When taking only the closest neighbors from the distance matrix and plotting the graph, we can see the outline of the sequence from the videos, and the outliers outside the graph :
+
+![Graph visualisation](.assets/rerun.png)
 
 ## Complexity Analysis
 
