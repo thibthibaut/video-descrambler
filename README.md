@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/video-descrambler.svg)](https://badge.fury.io/py/video-descrambler)
+
 # Video Descrambler
 
 ## Demo
