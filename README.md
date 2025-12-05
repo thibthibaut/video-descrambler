@@ -101,3 +101,25 @@ Space complexity is mostly related to the size of the distance matrix ($n\times 
 - **Audio is Ignored**: The current implementation only considers the visual information in the video frames. Any accompanying audio track is ignored and not used for sequencing, nor is it reconstructed in the output. It should however be straitforward to reconstruct the audio file by re-slicing it
 - **Outlier Detection**: The IQR-based outlier detection is very basic and not very robust for all scenarios and could potentially remove valid frames or keep junk frames.
 - **Runtime improvements**: For long sequences runtime can be longbecause of the $n^2$ pairwise-distance computation. One optimisation could be to compute a first rough distance matrix (using phash and hamming distance for instance) and then use a more precise distance metric during the sequencing phase, avoiding computing this costly distance for every pair, and caching the result to compute only once.
+
+## SBOM
+
+| Name                   | Version   | License                 |
+|------------------------|-----------|-------------------------|
+| Pygments               | 2.19.2    | BSD License             |
+| click                  | 8.3.1     | BSD-3-Clause            |
+| fast_tsp               | 0.1.4     | MIT                     |
+| joblib                 | 1.5.2     | BSD License             |
+| markdown-it-py         | 4.0.0     | MIT License             |
+| mdurl                  | 0.1.2     | MIT License             |
+| numpy                  | 2.2.6     | BSD License             |
+| opencv-python-headless | 4.12.0.88 | Apache Software License |
+| rich                   | 14.2.0    | MIT License             |
+| ruff                   | 0.14.6    | MIT License             |
+| scikit-learn           | 1.7.2     | BSD-3-Clause            |
+| scipy                  | 1.16.3    | BSD License             |
+| shellingham            | 1.5.4     | ISC License (ISCL)      |
+| threadpoolctl          | 3.6.0     | BSD License             |
+| typer                  | 0.20.0    | MIT License             |
+| typing_extensions      | 4.15.0    | PSF-2.0                 |
+| video-descrambler      | 1.0.0     | BEERWARE                |
